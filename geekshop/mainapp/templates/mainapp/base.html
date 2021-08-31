@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            {{title|title}}
+        {% endblock %}
+    </title>
+    {% block css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+        <link rel="stylesheet" href="{% static 'fonts/font-awesome/css/font-awesome.css' %}">
+    {% endblock %}
+
+    {% block js %}
+    {% endblock %}
+</head>
+<body>
+    <div class="container">
+        {% block menu %}
+            <ul class="menu">
+                <li><a href="{% url 'main' %}" class="active">домой</a></li>
+                <li><a href="{% url 'products' %}">продукты</a></li>
+                <li><a href="{% url 'contact' %}">контакты</a></li>
+            </ul>
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+
+    </div>
+
+    {% block footer %}
+        <div class="footer">
+            <div class="text-footer">
+                <h3>контакты</h3>
+            </div>
+            <div class="text-footer">
+                <h3>полезная информация</h3>
+            </div>
+        </div>
+    {% endblock %}
+</body>
+</html>
