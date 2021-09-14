@@ -26,7 +26,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70">
-        <schema name="main" object-types="table, view" />
+        <schema name="main" object-types="table, view, constraint, index, column, dataset trigger" />
       </connection>
     </loaded-nodes>
   </component>
@@ -39,7 +39,14 @@
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" object-ref="schemas/main/tables/basketapp_basket" />
+      <object connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" object-ref="schemas/main/tables/auth_group" />
+      <object connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" object-ref="schemas/main/tables/django_migrations" />
+      <object connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" object-ref="schemas/main/tables/mainapp_product" />
+      <object connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" object-ref="schemas/main/tables/mainapp_productcategory" />
+      <object connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" object-ref="schemas/main/tables/sqlite_sequence" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" />
@@ -51,11 +58,11 @@
         <condition column="id" operator="=" value="1" active="true" />
       </filter>
     </filter-actions>
-    <filter-actions connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" dataset="main.mainapp_product" active-filter-id="50d27120-efc9-4c32-bace-00dfb744378f">
-      <filter id="50d27120-efc9-4c32-bace-00dfb744378f" name="1" temporary="false" custom-name="false" type="basic" join-type="AND">
-        <condition column="id" operator="=" value="1" active="true" />
-      </filter>
-    </filter-actions>
+    <filter-actions connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" dataset="main.django_migrations" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" dataset="main.auth_group" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" dataset="main.sqlite_sequence" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" dataset="main.mainapp_product" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" dataset="main.basketapp_basket" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
