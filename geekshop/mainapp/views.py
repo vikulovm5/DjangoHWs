@@ -1,41 +1,55 @@
+import datetime
+
 from django.shortcuts import render, get_object_or_404
 from mainapp.models import Product, ProductCategory
-
 from basketapp.models import Basket
+import os, random, json
+
+JSON_PATH = 'mainapp/json'
+
+
+def load_from_json(file_name):
+    with open(os.path.join(JSON_PATH, file_name + '.json'), 'r') as infile:
+        return json.load(infile)
+
+
+def get_basket(user):
+    if user.is_authenticated:
+        return Basket.objects.filter(user=user)
+    else:
+        return []
+
+
+def get_hot_product():
+    products = Product.objects.all()
+    return random.sample(list(products), 1)[0]
+
+
+def get_same_products(hot_product):
+    same_product = Product.objects.filter(category=hot_product.category).exclude(pk=hot_product.pk)[:3]
+    return same_product
 
 
 def main(request):
     title = 'Главная'
     products = Product.objects.all()
-    content = {'title': title, 'products': products}
+    content = {
+        'title': title,
+        'products': products,
+        'basket': get_basket(request.user),
+    }
     return render(request, 'mainapp/index.html', content)
 
 
 def products(request, pk=None):
-    products = Product.objects.all()
-    content = {'products': products}
-    return render(request, 'mainapp/products_list.html', content)
+    title = 'продукты'
+    links_menu = ProductCategory.objects.all()
+    basket = get_basket(request.user)
 
-
-def product(request, pk):
-    product = Product.objects.filter(pk=pk)
-    content = {'products': product}
-    return render(request, 'mainapp/product_page.html', content)
-
-
-def contact(request):
-    return render(request, 'mainapp/contact.html')
-
-
-def count(request, pk):
-    basket = []
-    if request.user.is_authenticated:
-        basket = Basket.objects.filter(user=request.user)
-
-    if pk:
-        if pk == '0':
-            products = Product.objects.all().order_by('price')
+    if pk is not None:
+        if pk == 0:
             category = {'name': 'все'}
+            products = Product.objects.all().order_by('price')
         else:
             category = get_object_or_404(ProductCategory, pk=pk)
             products = Product.objects.filter(category__pk=pk).order_by('price')
@@ -49,3 +63,32 @@ def count(request, pk):
         }
 
         return render(request, 'mainapp/products_list.html', content)
+
+    hot_product = get_hot_product()
+    same_products = get_same_products(hot_product)
+
+    content = {
+        'title': title,
+        'links_menu': links_menu,
+        'hot_product': hot_product,
+        'same_products': same_products,
+        'basket': basket,
+    }
+
+    return render(request, 'mainapp/products.html', content)
+
+
+def contact(request):
+    title = 'о нас'
+    visit_date = datetime.datetime.now()
+
+    locations = load_from_json('contact__locations')
+
+    content = {
+        'title': title,
+        'visit_date': visit_date,
+        'locations': locations,
+        'basket': get_basket(request.user),
+    }
+
+    return render(request, 'mainapp/contact.html', content)

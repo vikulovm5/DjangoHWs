@@ -40,8 +40,8 @@
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files>
-      <object connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" object-ref="schemas/main/tables/basketapp_basket" />
       <object connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" object-ref="schemas/main/tables/mainapp_product" />
+      <object connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" object-ref="schemas/main/tables/basketapp_basket" />
     </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
