@@ -8,9 +8,9 @@ import os, random, json
 JSON_PATH = 'mainapp/json'
 
 
-def load_from_json(file_name):
-    with open(os.path.join(JSON_PATH, file_name + '.json'), 'r') as infile:
-        return json.load(infile)
+#def load_from_json(file_name):
+#    with open(os.path.join(JSON_PATH, file_name + '.json'), 'r') as infile:
+#        return json.load(infile)
 
 
 def get_basket(user):
@@ -39,6 +39,17 @@ def main(request):
         'basket': get_basket(request.user),
     }
     return render(request, 'mainapp/index.html', content)
+
+
+def product(request, pk):
+    title = 'продукт'
+    content = {
+        'title': title,
+        'links_menu': ProductCategory.objects.all(),
+        'product': get_object_or_404(Product, pk=pk),
+        'basket': get_basket(request.user),
+    }
+    return render(request, 'mainapp/product.html', content)
 
 
 def products(request, pk=None):
@@ -82,12 +93,12 @@ def contact(request):
     title = 'о нас'
     visit_date = datetime.datetime.now()
 
-    locations = load_from_json('contact__locations')
+#    locations = load_from_json('contact__locations')
 
     content = {
         'title': title,
         'visit_date': visit_date,
-        'locations': locations,
+#        'locations': locations,
         'basket': get_basket(request.user),
     }
 

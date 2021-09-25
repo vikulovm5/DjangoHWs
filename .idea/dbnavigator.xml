@@ -26,7 +26,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70">
-        <schema name="main" object-types="table, view, constraint, index, column, dataset trigger" />
+        <schema name="main" object-types="table, view, column" />
       </connection>
     </loaded-nodes>
   </component>
@@ -39,10 +39,7 @@
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" object-ref="schemas/main/tables/mainapp_product" />
-      <object connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" object-ref="schemas/main/tables/basketapp_basket" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" />
@@ -54,9 +51,12 @@
         <condition column="id" operator="=" value="1" active="true" />
       </filter>
     </filter-actions>
+    <filter-actions connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" dataset="main.authapp_shopuser" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" dataset="main.django_migrations" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" dataset="main.auth_group" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" dataset="main.sqlite_sequence" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" dataset="main.auth_group_permissions" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" dataset="main.authapp_shopuser_user_permissions" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" dataset="main.mainapp_product" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="6e489318-9e4b-4ba0-aadd-1ab8e7345f70" dataset="main.basketapp_basket" active-filter-id="EMPTY_FILTER" />
   </component>
